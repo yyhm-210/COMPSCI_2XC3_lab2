@@ -8,7 +8,7 @@ from graph import create_random_graph, has_cycle, is_connected
 def experiment_cycle():
     n = 50
     runs = 200
-    edge_values = list(range(0, 200, 10))
+    edge_values = list(range(0, 50, 1))
     probabilities = []
 
     for m in edge_values:

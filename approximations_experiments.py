@@ -44,7 +44,7 @@ def plot_three_curves(x_values, y1, y2, y3, xlabel, title):
     plt.plot(x_values, y2, marker='o', label="Approx2")
     plt.plot(x_values, y3, marker='o', label="Approx3")
     plt.xlabel(xlabel)
-    plt.ylabel("Expected performance (sum approx sizes / sum MVC sizes)")
+    plt.ylabel("sum approx sizes / sum MVC sizes")
     plt.title(title)
     plt.legend()
     plt.grid(True)
@@ -57,9 +57,7 @@ def experiment1():
     n = 10
     runs = 1000
 
-    max_edges = n * (n - 1) // 2
-    m_values = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
-    m_values = [m for m in m_values if m <= max_edges]
+    m_values = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45]
 
     expected1 = []
     expected2 = []
@@ -79,13 +77,13 @@ def experiment1():
         m_values, expected1, expected2, expected3,
         "Number of edges (m)",
         "Approximation  vs Number of Edges"
-    )
+    )   
 
 
 def experiment2():
     print("EXPERIMENT 2")
 
-    runs = 500
+    runs = 1000
 
     m = 20
     n_values = [i for i in range(2, 16)]
@@ -108,14 +106,14 @@ def experiment2():
     plot_three_curves(
         n_values, expected1, expected2, expected3,
         "Number of nodes (n)",
-        f"Approximation vs Number of Nodes (fixed m ={m})"
+        f"Approximation vs Number of Nodes"
     )
 
 
 def experiment3():
     print("EXPERIMENT 3")
 
-    runs = 500
+    runs = 1000
     n_values = [i for i in range(2, 16)]
     d = 0.5
 
@@ -142,14 +140,14 @@ def experiment3():
     plot_three_curves(
         n_values, expected1, expected2, expected3,
         "Number of nodes (n)",
-        f"Approximation vs Number of Nodes (density ={d})"
+        f"Approximation vs Number of Nodes"
     )
    
 
 def main():
     #experiment1()
-    experiment2()
-    #experiment3()
+    #experiment2()
+    experiment3()
 
 
 if __name__ == "__main__":

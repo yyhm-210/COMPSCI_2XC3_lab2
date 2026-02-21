@@ -26,6 +26,9 @@ class Graph:
 
     def number_of_nodes():
         return len()
+    
+    def get_size(self):
+        return len(self.adj)
 
 def construct_path(parent, start, end):
     path = [end]

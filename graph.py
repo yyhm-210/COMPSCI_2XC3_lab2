@@ -205,3 +205,80 @@ def create_random_graph(n, m):
                 G.add_edge(u, v)
 
     return G
+
+#############################Vertex Cover problem
+def copy_graph(G):
+    GCopy = Graph(len(G.adj))
+    for v in G.adj:
+        GCopy.adj[v] = G.adj[v].copy()
+    return GCopy
+
+#Get the
+def getHighestDegree(G):
+    highest = -1
+    v = None
+    for i in (G.adj):
+        l = len(G.adj[i])
+        if l > highest:
+            highest = l
+            v = i
+    return v
+
+
+def removeVertex(G,v):
+    for u in G.adj[v]:
+        G.adj[u].remove(v)
+
+    G.adj[v] = []
+
+#determine if there's any edge in G
+def hasEgde(G):
+    for i in G.adj:
+        if (len(G.adj[i]) > 0):
+            return True
+    return False
+
+
+def approx1(G):
+    GCopy = copy_graph(G)
+    C = set()
+
+    # if there's any edge in the copied G, C is not a vertex cover
+    while(hasEgde(GCopy)):
+        v = getHighestDegree(GCopy)
+        C.add(v)
+        removeVertex(GCopy,v)
+    return C
+
+def approx2(G):
+    vertices = [i for i in G.adj]
+    C = set()
+
+    while (not is_vertex_cover(G,C)) and vertices:
+        v = random.choice(vertices)
+        C.add(v)
+        vertices.remove(v)
+    return C
+
+def getVerticesWithEdges(G):
+    l = []
+    for i in G.adj:
+        if len(G.adj[i]) > 0:
+            l.append(i)
+    return l
+
+def approx3(G):
+    GCopy = copy_graph(G)
+    C = set()
+
+    while(hasEgde(GCopy)):
+        
+        l = getVerticesWithEdges(GCopy)
+        u = random.choice(l)
+        v = random.choice(GCopy.adj[u])
+        C.add(u)
+        C.add(v)
+        removeVertex(GCopy,u)
+        removeVertex(GCopy,v)
+
+    return C    

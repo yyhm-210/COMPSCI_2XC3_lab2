@@ -1,4 +1,6 @@
 from collections import deque
+import random
+
 
 #Undirected graph using an adjacency list
 class Graph:
@@ -188,3 +190,18 @@ def MVC(G):
     return min_cover
 
 
+def create_random_graph(n, m):
+    G = Graph(n)
+    edges = set()
+
+    while len(edges) < m:
+        u = random.randint(0, n - 1)
+        v = random.randint(0, n - 1)
+
+        if u != v:
+            edge = tuple(sorted((u, v)))
+            if edge not in edges:
+                edges.add(edge)
+                G.add_edge(u, v)
+
+    return G

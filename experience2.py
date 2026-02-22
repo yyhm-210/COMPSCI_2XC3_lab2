@@ -6,8 +6,8 @@ from graph import create_random_graph, has_cycle, is_connected
 # =========================
 def experiment_connected():
     n = 50
-    runs = 200
-    edge_values = list(range(25, 250, 10))
+    runs = 500
+    edge_values = list(range(25, 250, 5))
     probabilities = []
 
     for m in edge_values:

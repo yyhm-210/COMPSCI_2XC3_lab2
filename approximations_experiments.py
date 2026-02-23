@@ -145,8 +145,8 @@ def experiment3():
    
 
 def main():
-    #experiment1()
-    #experiment2()
+    experiment1()
+    experiment2()
     experiment3()
 
 
